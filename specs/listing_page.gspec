@@ -1,9 +1,19 @@
 # This covers Quandoo Listing Page Visual Testing
 ========================================
 @objects
-    nearby-filter   xpath         //*[@data-qa="filter-button-nearby"]
-    listing_header  xpath         //div[@data-qa='listing-header']
-    find_button     xpath         //*[@data-qa="button-search-find-header"]
+    nearby-filter        xpath         //*[@data-qa="filter-button-nearby"]
+    listing_header       xpath         //div[@data-qa='listing-header']
+    breadcrumbs          xpath         //div[@data-qa='breadcrumbs']
+    language_selector    xpath         //div[@data-qa='lang-selector-toggle']
+    log_in               xpath         //div[@data-qa='header-login']
+    find_button          xpath         //*[@data-qa="button-search-find-header"]
+    logo_footer          xpath         //div[@class='sc-1jmynk5-0 gNqYxZ']
+    legacy_section       xpath         //div[@data-qa="footer-legal-section"]
+   #app_store_btn        xpath         //a[@class="obv7nw-0 cvEzSl"]
+    app_store_btn        xpath         //*[@id="root"]/section/div[4]/div/div/div[5]/div/div/a[1]
+   #play_store_btn       xpath         //a[@class="obv7nw-0 coJgOA"]
+    play_store_btn       xpath         //*[@id="root"]/section/div[4]/div/div/div[5]/div/div/a[2]
+    search_field         xpath         //input[@data-qa="search-bar-dining-input"]
 
 ========================================
 # Validation on desktop resolutions
@@ -11,8 +21,23 @@
 ========================================
 
 = Header section =
+
+    search_field:
+      text is "${i18n.search.field}"
+      height ~ 40px
+      width ~ 317px
+
+    breadcrumbs:
+      height ~ 40px
+      width ~ 1899px
+
+    language_selector:
+      right-of log_in 1 to 42px
+      css font-size is "14px"
+      css font-family matches ".*Roboto.*, .*Helvetica.*,.*Arial.*,.*sans-serif.*"
+
     listing_header:
-      height 215 to 220px
+      height ~ 443px
       width ~ 887px
 
     find_button:
@@ -21,4 +46,19 @@
 
 = Filter section =
     nearby-filter:
-       text is "${i18n.nearby.filter}"
+      text is "${i18n.nearby.filter}"
+
+= Footer section =
+    logo_footer:
+       height ~ 37px
+       width ~ 165px
+       below legacy_section 40px
+
+    play_store_btn:
+       height ~ 40px
+       width ~ 136px
+
+    app_store_btn:
+       height ~ 40px
+       width ~ 136px
+       above play_store_btn ~ 25px
